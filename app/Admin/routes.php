@@ -29,6 +29,7 @@ Route::group([
     $router->resource('users', UserController::class);
     $router->resource('shopping-carts', ShoppingCartController::class)->only('index');
 
+    $router->post('products/import', [ProductController::class, 'csvImport']);
 });
 
 
