@@ -4,6 +4,7 @@ use Illuminate\Routing\Router;
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\ProductController;
 use App\Admin\Controllers\MajorCategoryController;
+use App\Admin\Controllers\UserController;
 
 
 Admin::routes();
@@ -17,11 +18,14 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('categories', CategoryController::class);
+
     $router->resource('products', ProductController::class);
     // 404 Not Foundエラーあり
+    
     $router->resource('major-categories', MajorCategoryController::class);
-
     // 404 Not Foundエラーあり
+
+    $router->resource('users', UserController::class);
 });
 
 
