@@ -21,7 +21,6 @@ Route::group([
     $router->resource('categories', CategoryController::class);
 
     $router->resource('products', ProductController::class);
-    // 404 Not Foundエラーあり
 
     $router->resource('major-categories', MajorCategoryController::class);
     // 404 Not Foundエラーあり
