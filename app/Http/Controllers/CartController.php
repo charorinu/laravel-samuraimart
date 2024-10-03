@@ -20,22 +20,22 @@ public function index()
     $cart = Cart::instance(Auth::user()->id)->content();
 
     $total = 0;
-        $has_carriage_cost = false;
-       $carriage_cost = 0;
+    $has_carriage_cost = false;
+    $carriage_cost = 0;
 
     foreach ($cart as $c) {
         $total += $c->qty * $c->price;
-            if ($c->options->carriage) {
-                $has_carriage_cost = true;
-            }
+        if ($c->options->carriage) {
+            $has_carriage_cost = true;
+        }
+    }
+    
+    if($has_carriage_cost) {
+        $total += env('CARRIAGE');
+        $carriage_cost = env('CARRIAGE');
     }
 
-        if($has_carriage_cost) {
-            $total += env('CARRIAGE');
-            $carriage_cost = env('CARRIAGE');
-        }
-
-        return view('carts.index', compact('cart', 'total', 'carriage_cost'));
+    return view('carts.index', compact('cart', 'total', 'carriage_cost'));
 }
 
     
